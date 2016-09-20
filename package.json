@@ -1,0 +1,41 @@
+{
+  "name": "html-to-react-loader",
+  "version": "1.0.0-alpha.2",
+  "description": "A Webpack loader allowing imports of HTML files as there were React Components",
+  "main": "./loader/index.js",
+  "bin": {
+    "html-to-react": "./bin/cli.js"
+  },
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simonrelet/html-to-react-loader.git"
+  },
+  "keywords": [
+    "html",
+    "react",
+    "webpack",
+    "loader"
+  ],
+  "author": "Simon Relet",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/simonrelet/html-to-react-loader/issues"
+  },
+  "homepage": "https://github.com/simonrelet/html-to-react-loader#readme",
+  "eslintConfig": {
+    "extends": "simonrelet"
+  },
+  "devDependencies": {
+    "eslint": "^3.5.0",
+    "eslint-config-simonrelet": "^1.0.0"
+  },
+  "dependencies": {
+    "change-case": "^3.0.0",
+    "fs-promise": "^0.5.0",
+    "htmlparser2": "^3.9.1",
+    "minimist": "^1.2.0"
+  }
+}

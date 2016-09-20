@@ -1,0 +1,32 @@
+<import path="./text-input" as="text-input" />
+
+<template>
+  <div>
+    <div class="row">
+      <span class="label" for="first-name">First name:</span>
+      <span class="value">
+        <text-input
+          id="first-name"
+          value="{{ props.firstName }}"
+          on-change="{{ props.onFirstNameChange }}"
+        />
+      </span>
+    </div>
+
+    <div class="row">
+      <span class="label" for="last-name">Last name:</span>
+      <span class="value">
+        <text-input
+          id="last-name"
+          value="{{ props.lastName }}"
+          on-change="{{ props.onLastNameChange }}"
+        />
+      </span>
+    </div>
+
+    <div class="row">
+      <span class="label">Full name:</span>
+      <span class="value">{{ `${props.firstName} ${props.lastName}` }}</span>
+    </div>
+  </div>
+</template>

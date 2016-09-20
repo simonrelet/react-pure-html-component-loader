@@ -1,0 +1,27 @@
+<import path="path/to/component" as="component-name">
+  <import name="InnerComponent" as="named-import-alias" />
+  <import name="OtherNamedImport" as="other-named-import" />
+</import>
+
+<template>
+  <div class="some-class">
+    <div class="self-closed" />
+
+    <div class="with-content">
+      Some Content {{ name }}
+    </div>
+
+    <!-- <missing-close> -->
+    <span class="empty-tag"></span>
+
+    <div class="hybrid-content">
+      Content
+      <input />
+    </div>
+
+    <component-name>
+      <named-import-alias />
+      <other-named-import />
+    </component-name>
+  </div>
+</template>
