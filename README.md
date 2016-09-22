@@ -51,7 +51,7 @@ _user-component.jsx.html_
 
     <div class="row">
       <span class="label">Full name:</span>
-      <span class="value">{{ `${props.firstName} ${props.lastName}` }}</span>
+      <span class="value">{{ props.firstName }} {{ props.lastName }}</span>
     </div>
   </div>
 </template>
