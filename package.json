@@ -1,6 +1,6 @@
 {
   "name": "html-to-react-loader",
-  "version": "1.0.0-alpha.4",
+  "version": "1.0.0-alpha.6",
   "description": "A Webpack loader allowing imports of HTML files as there were React Components",
   "main": "./loader/index.js",
   "bin": {
