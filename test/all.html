@@ -1,0 +1,43 @@
+<import path="path/to/component" as="component-name">
+  <import name="InnerComponent" as="named-import-alias" />
+  <import name="OtherNamedImport" as="other-named-import" />
+</import>
+<import path="other/path/to/component" as="other-component" />
+
+<template name="inner-template">
+  <div>{{ props.value }}</div>
+</template>
+
+<template>
+  <div>
+    <div class="self-closed" />
+
+    <div class="with-content">
+      Some Content {{ props.name }}
+    </div>
+
+    <span class="empty-tag"></span>
+
+    <div class="hybrid-content">
+      Content
+      <other-component />
+    </div>
+
+    <component-name>
+      <named-import-alias />
+      <other-named-import />
+    </component-name>
+
+    <repeat
+      template="inner-template"
+      for-each="{{ props.users }}"
+      key="id"
+    />
+
+    <repeat
+      template="other-named-import"
+      for-each="{{ props.groups }}"
+      key="groupId"
+    />
+  </div>
+</template>
