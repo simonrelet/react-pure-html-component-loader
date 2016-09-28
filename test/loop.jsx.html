@@ -1,0 +1,9 @@
+<template>
+  <div>
+    <repeat for-each="{{ props.users }}" as="{{ user }}">
+      <div key="{{ user.id }}">
+        {{ user.name }}
+      </div>
+    </repeat>
+  </div>
+</template>

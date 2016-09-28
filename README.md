@@ -299,55 +299,80 @@ export default function(props) {
 
 ### Loops
 
-A loop is simply the application of a template for the values contained in an
-array. Each value in the array must have a unique identifier.
+A loop will repeat its content for each element in the array. The `repeate` tag
+can only have one child.
 
 **Usage**
 ```html
-<repeat template for-each key />
+<repeat for-each as>
+  <!-- Content -->
+</repeat>
 ```
 
 **Attributes**
-  * `template`: Tag name of the template to use,
   * `for-each`: Array of data,
-  * `key`: Name of the attribute to use as identifier.
+  * `as`: Name of variable to use for each element.
 
 **Example**
 ```html
-<template name="user-component">
-  <div>{{ props.name }}</div>
-</template>
-
 <template>
   <div class="users">
-    <repeat
-      template="user-component"
-      for-each="{{ props.users }}"
-      key="userId"
-    />
+    <repeat for-each="{{ props.users }}" as="user">
+      <div key="{{ user.id }}">{{ user.name }}</div>
+    </repeat>
   </div>
 </template>
 ```
 
 _Is equivalent in React to_
 ```js
-export function UserComponent(props) {
-  return (
-    <div>{{ props.name }}</div>
-  );
-}
-
 export default function(props) {
-  const users = props.users.map(user => (
-    <UserComponent
-      { ...user }
-      key={ user.userId }
-    />
-  ));
-
   return (
     <div className="users">
-      { users }
+      { props.users.map(user => (
+        <div key={ user.id }>
+          {{ user.name }}
+        </div>
+      )) }
+    </div>
+  );
+}
+```
+
+### Conditionals
+
+A conditional will render its content depending on a condition. The `render` tag
+can only have one child.
+
+**Usage**
+```html
+<render if>
+  <!-- Content -->
+</render>
+```
+
+**Attributes**
+  * `if`: Condition to fulfill for the content to be rendered.
+
+**Example**
+```html
+<template>
+  <div class="user">
+    <render if="{{ props.user }}">
+      <div>{{ props.user.name }}</div>
+    </render>
+  </div>
+</template>
+```
+
+_Is equivalent in React to_
+```js
+export default function(props) {
+  return (
+    <div className="user">
+      { (props.user) && (
+        <div>{{ props.user.name }}</div>
+      ) }
     </div>
   );
 }

@@ -28,16 +28,25 @@
       <other-named-import />
     </component-name>
 
-    <repeat
-      template="inner-template"
-      for-each="{{ props.users }}"
-      key="id"
-    />
+    <repeat for-each="{{ props.users }}" as="{{ user }}">
+      <inner-template
+        key="{{ user.id }}"
+        value="{{ user.value }}"
+      />
+    </repeat>
 
-    <repeat
-      template="other-named-import"
-      for-each="{{ props.groups }}"
-      key="groupId"
-    />
+    <render if="{{ props.show }}">
+      <other-named-import />
+    </render>
+
+    <repeat for-each="{{ props.users }}" as="{{ user }}">
+      <div key="{{ user.id }}">
+        <span>{{ user.name }}</span>
+        <render if="{{ user.admin }}">
+          <span>Admin</span>
+        </render>
+      </div>
+    </repeat>
+
   </div>
 </template>
