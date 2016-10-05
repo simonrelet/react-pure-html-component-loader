@@ -1,16 +1,22 @@
 # html-to-react-loader
 
-> A Webpack loader allowing imports of HTML files as there were React Components
+> A Webpack loader allowing imports of HTML templates as if there were React
+> components.
+
+## Why?
+
+Basically, React is awesome for developers but isn't as simple as HTML for most
+designers, but HTML isn't as flexible as a programing language. Thanks to the
+pure functional components and the Container and Components pattern, most
+components are templates having data as input and some UI as output. What if
+those pure functional templates could simply be in written in HTML to be easily
+created and modified by designers?
+
+**html-to-react-loader** allows to use both the simplicity of the HTML syntax
+and the efficiency of React components. It is a Webpack loader compiling HTML
+templates into pure functional React components.
 
 ## Installation
-
-As a command line tool:
-
-```
-npm install -g html-to-react-loader
-```
-
-Or as a Webpack loader:
 
 ```
 npm install --save-dev html-to-react-loader
@@ -18,8 +24,9 @@ npm install --save-dev html-to-react-loader
 
 ## Demo: First name, last name component
 
-_user-component.jsx.html_
+_./user-component.jsx.html_
 ```html
+<!-- Some other React component. -->
 <import path="./text-input" as="text-input" />
 
 <template>
@@ -54,22 +61,18 @@ _user-component.jsx.html_
 </template>
 ```
 
-_user-container.jsx_
+_./user-container.jsx_
 ```js
-'use strict';
-
 import React, { Component } from 'react';
+
+// Import the HTML template as if it was a React component.
 import UserComponent from './user-component';
 
 export default class UserContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      firstName: '',
-      lastName: ''
-    };
-
+    this.state = { firstName: '', lastName: '' };
     this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
     this.handleLastNameChange = this.handleLastNameChange.bind(this);
   }
