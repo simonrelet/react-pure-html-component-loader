@@ -1,4 +1,4 @@
-# html-to-react-loader
+# react-html-template-loader
 
 > A Webpack loader allowing imports of HTML templates as if there were React
 > components.
@@ -19,7 +19,7 @@ templates into pure functional React components.
 ## Installation
 
 ```
-npm install --save-dev html-to-react-loader
+npm install --save-dev react-html-template-loader
 ```
 
 ## Demo: First name, last name component

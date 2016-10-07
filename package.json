@@ -1,20 +1,19 @@
 {
-  "name": "html-to-react-loader",
+  "name": "react-html-template-loader",
   "version": "1.0.0-alpha.10",
-  "description": "A Webpack loader allowing imports of HTML files as there were React Components",
+  "description": "A Webpack loader allowing imports of HTML templates as there were React components",
   "main": "./loader/index.js",
-  "bin": {
-    "html-to-react": "./bin/cli.js"
-  },
   "scripts": {
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test": "node test"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simonrelet/html-to-react-loader.git"
+    "url": "git+https://github.com/simonrelet/react-html-template-loader.git"
   },
   "keywords": [
     "html",
+    "template",
     "react",
     "webpack",
     "loader"
@@ -22,9 +21,9 @@
   "author": "Simon Relet",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/simonrelet/html-to-react-loader/issues"
+    "url": "https://github.com/simonrelet/react-html-template-loader/issues"
   },
-  "homepage": "https://github.com/simonrelet/html-to-react-loader#readme",
+  "homepage": "https://github.com/simonrelet/react-html-template-loader#readme",
   "eslintConfig": {
     "extends": "simonrelet"
   },
