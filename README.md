@@ -1,20 +1,75 @@
 # react-html-template-loader
 
-> A Webpack loader allowing imports of HTML templates as if there were React
+> A Webpack loader allowing imports of HTML templates as if they were React
 > components.
 
-## Why?
+## Usage
 
-Basically, React is awesome for developers but isn't as simple as HTML for most
-designers, but HTML isn't as flexible as a programing language. Thanks to the
-pure functional components and the Container and Components pattern, most
-components are templates having data as input and some UI as output. What if
-those pure functional templates could simply be in written in HTML to be easily
-created and modified by designers?
+_./click-me-component.jsx.html_
+```html
+<template>
+  <button use-props="{{ props.buttonProps }}">
+    Clicked {{ props.clicks }} time(s)
+  </button>
+</template>
+```
 
-**html-to-react-loader** allows to use both the simplicity of the HTML syntax
-and the efficiency of React components. It is a Webpack loader compiling HTML
-templates into pure functional React components.
+_./click-me-container.jsx_
+```js
+import React, { Component } from 'react';
+
+// Import the HTML template as if it was a React component.
+import ClickMeComponent from './click-me-component';
+
+export default class ClickMeContainer extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = { clicks: 0 };
+    this.buttonProps = { onMouseDown: this.handleMouseDown.bind(this) };
+  }
+
+  handleMouseDown(e) {
+    e.preventDefault();
+    this.setState({ clicks: this.state.clicks++ });
+  }
+
+  render() {
+    return (
+      <ClickMeComponent
+        clicks={ this.state.clicks }
+        buttonProps={ this.buttonProps }
+      />
+    );
+  }
+}
+```
+
+Add to your _webpack.config.js_ the react-html-template-loader:
+```js
+{
+  module: {
+    loaders: [
+      {
+        test: /\.jsx\.html$/,
+        exclude: /node_modules/,
+        loader: 'babel!react-html-template'
+      }
+    ]
+  },
+  resolve: {
+    extensions: [ '.jsx', '.jsx.html' ]
+  }
+}
+```
+
+## Features
+
+  * Default and named imports/exports,
+  * Multiple template definitions in the same file,
+  * Explicit conditional and loop rendering,
+  * Props spreading,
+  * CSS modules.
 
 ## Installation
 
@@ -22,117 +77,13 @@ templates into pure functional React components.
 npm install --save-dev react-html-template-loader
 ```
 
-## Demo: First name, last name component
-
-_./user-component.jsx.html_
-```html
-<!-- Some other React component. -->
-<import path="./text-input" as="text-input" />
-
-<template>
-  <div>
-    <div class="row">
-      <span class="label" for="first-name">First name:</span>
-      <span class="value">
-        <text-input
-          id="first-name"
-          value="{{ props.firstName }}"
-          on-change="{{ props.onFirstNameChange }}"
-        />
-      </span>
-    </div>
-
-    <div class="row">
-      <span class="label" for="last-name">Last name:</span>
-      <span class="value">
-        <text-input
-          id="last-name"
-          value="{{ props.lastName }}"
-          on-change="{{ props.onLastNameChange }}"
-        />
-      </span>
-    </div>
-
-    <div class="row">
-      <span class="label">Full name:</span>
-      <span class="value">{{ props.firstName }} {{ props.lastName }}</span>
-    </div>
-  </div>
-</template>
-```
-
-_./user-container.jsx_
-```js
-import React, { Component } from 'react';
-
-// Import the HTML template as if it was a React component.
-import UserComponent from './user-component';
-
-export default class UserContainer extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { firstName: '', lastName: '' };
-    this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
-    this.handleLastNameChange = this.handleLastNameChange.bind(this);
-  }
-
-  handleFirstNameChange(e) {
-    e.preventDefault();
-    this.setState({ firstName: e.target.value });
-  }
-
-  handleLastNameChange(e) {
-    e.preventDefault();
-    this.setState({ lastName: e.target.value });
-  }
-
-  render() {
-    return (
-      <UserComponent
-        firstName={ this.state.firstName }
-        lastName={ this.state.lastName }
-        onFirstNameChange={ this.handleFirstNameChange }
-        onLastNameChange={ this.handleLastNameChange }
-      />
-    );
-  }
-}
-
-UserContainer.displayName = 'UserContainer';
-```
-
-Basic _webpack.config.js_
-```js
-{
-  module: {
-    loaders: [
-      {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
-      {
-        test: /\.jsx\.html$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader!html-to-react'
-      }
-    ]
-  },
-
-  resolve: {
-    extensions: [ '.jsx', '.jsx.html' ]
-  }
-}
-```
-
-## Usage
+## API
 
 ### Imports
 
 #### Default import
 
-Import a default component.
+Import the default export of a file.
 
 **Usage**
 ```html
@@ -141,23 +92,22 @@ Import a default component.
 
 **Attributes**
   * `path`: Path to the file to import,
-  * `as`: Tag name to use to reference the default component of the imported
-    file.
+  * `as`: Name to use to reference the default export of the file.
 
 **Example**
 ```html
 <import path="path/to/component" as="my-component" />
 ```
 
-_Is equivalent in ES2015 to_
+_Is equivalent in ES2015 to:_
 ```js
 import MyComponent from 'path/to/component';
 ```
 
 #### Named imports
 
-Import a component by its name. The import tag for a named import must be child
-of an other import tag having a `path` attribute.
+Import an export by its name. The `<import>` tag for a named import must be
+child of an other `<import>` tag having a `path` attribute.
 
 **Usage**
 ```html
@@ -168,28 +118,28 @@ of an other import tag having a `path` attribute.
 
 **Attributes**
   * `path`: Path to the file to import,
-  * `name`: Name of the component to import,
-  * `as`: Tag name to use to reference the component.
+  * `name`: Name of the variable to import,
+  * `as`: Name to use to reference the export.
 
 **Example**
 ```html
 <import path="path/to/component">
   <import name="ANamedImport" as="a-named-import" />
-  <import name="AnohterNamedImport" as="second-component" />
+  <import name="AnohterNamedImport" as="my-component" />
 </import>
 ```
 
-_Is equivalent in ES2015 to_
+_Is equivalent in ES2015 to:_
 ```js
 import {
   ANamedImport as ANamedImport,
-  AnohterNamedImport as SecondComponent
+  AnohterNamedImport as MyComponent
 } from 'path/to/component';
 ```
 
 #### Default and named imports
 
-Import the default and some named components from the same file.
+Import the default and some named exports from the same file.
 
 **Usage**
 ```html
@@ -199,32 +149,32 @@ Import the default and some named components from the same file.
 ```
 
 **Attributes**
-  * _See default imports and Named imports._
+  * _See [default imports](#default-import) and [named imports](#named-imports)._
 
 **Example**
 ```html
 <import path="path/to/component" as="my-component">
   <import name="ANamedImport" as="a-named-import" />
-  <import name="AnohterNamedImport" as="second-component" />
+  <import name="AnohterNamedImport" as="my-component" />
 </import>
 ```
 
-_Is equivalent in ES2015 to_
+_Is equivalent in ES2015 to:_
 ```js
 import MyComponent, {
   ANamedImport as ANamedImport,
-  AnohterNamedImport as SecondComponent
+  AnohterNamedImport as MyComponent
 } from 'path/to/component';
 ```
 
 ### Templates
 
-A template is an HTML node containing a single root child.
+A template is an HTML tag containing a single root child.
 
 #### Default template
 
-Each file must contain only one default template. A default template cannot be
-named, it is the entry point of the file.
+Each file must contain at most one default template. A default template cannot
+be named, it is the main template of the file.
 
 **Usage**
 ```html
@@ -243,7 +193,7 @@ named, it is the entry point of the file.
 </template>
 ```
 
-_Is equivalent in React to_
+_Is equivalent in React to:_
 ```js
 export default function() {
   return (
@@ -281,7 +231,7 @@ their given name.
 </template>
 ```
 
-_Is equivalent in React to_
+_Is equivalent in React to:_
 ```js
 export function NamedTemplate(props) {
   return (
@@ -292,9 +242,7 @@ export function NamedTemplate(props) {
 export default function(props) {
   return (
     // ...
-
     <NamedTemplate />
-
     // ...
   );
 }
@@ -328,7 +276,7 @@ each child tag.
 </template>
 ```
 
-_Is equivalent in React to_
+_Is equivalent in React to:_
 ```js
 export default function(props) {
   return (
@@ -369,14 +317,12 @@ can only have one child.
 </template>
 ```
 
-_Is equivalent in React to_
+_Is equivalent in React to:_
 ```js
 export default function(props) {
   return (
     <div className="user">
-      { (props.user) && (
-        <div>{{ props.user.name }}</div>
-      ) }
+      { props.user && <div>{{ props.user.name }}</div> }
     </div>
   );
 }
@@ -413,7 +359,7 @@ _Instead of writing:_
 </template>
 ```
 
-_Just write_
+_Just write:_
 ```html
 <template>
   <button use-props="{{ props.buttonProps }}">
@@ -422,7 +368,7 @@ _Just write_
 </template>
 ```
 
-_Which is equivalent in React to_
+_Which is equivalent in React to:_
 ```js
 export default function(props) {
   return (
@@ -432,3 +378,20 @@ export default function(props) {
   );
 }
 ```
+
+## Background
+
+Basically, React is awesome for developers but isn't as simple as HTML for most
+designers, but HTML isn't as flexible as a programing language. Thanks to the
+pure functional components and the Container and Components pattern, most
+components are templates having data as input and some UI as output. What if
+those pure functional templates could simply be in written in HTML to be easily
+created and modified by designers?
+
+**react-html-template-loader** allows to use both the simplicity of the HTML
+syntax and the efficiency of React components. It is a Webpack loader compiling
+HTML templates into pure functional React components.
+
+# License
+
+MIT.
