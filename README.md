@@ -91,7 +91,7 @@ Import the default export of a file.
 ```
 
 **Attributes**
-  * `path`: Path to the file to import,
+  * `path`: Path of the file to import,
   * `as`: Name to use to reference the default export of the file.
 
 **Example**
@@ -117,7 +117,7 @@ child of an other `<import>` tag having a `path` attribute.
 ```
 
 **Attributes**
-  * `path`: Path to the file to import,
+  * `path`: Path of the file to import,
   * `name`: Name of the variable to import,
   * `as`: Name to use to reference the export.
 
