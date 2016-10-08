@@ -302,27 +302,28 @@ export default function(props) {
 
 ### Loops
 
-A loop will repeat its content for each element in the array. The `repeate` tag
-can only have one child.
+A loop will render its content for each element in the array. The `render` tag
+can only have one child. When looping over an array, an `id` tag must be set on
+each child tag.
 
 **Usage**
 ```html
-<repeat for-each as>
+<render for-each as>
   <!-- Content -->
-</repeat>
+</render>
 ```
 
 **Attributes**
   * `for-each`: Array of data,
-  * `as`: Name of variable to use for each element.
+  * `as`: Name of the variable to use for each element.
 
 **Example**
 ```html
 <template>
   <div class="users">
-    <repeat for-each="{{ props.users }}" as="user">
+    <render for-each="{{ props.users }}" as="user">
       <div key="{{ user.id }}">{{ user.name }}</div>
-    </repeat>
+    </render>
   </div>
 </template>
 ```
