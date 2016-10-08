@@ -381,3 +381,54 @@ export default function(props) {
   );
 }
 ```
+
+### Props spreading
+
+Props spreading is used to simplify the template so the focus can be kept on the
+UI.
+
+**Usage**
+```html
+<any-tag use-props>
+  <!-- Content -->
+</any-tag>
+```
+
+**Attributes**
+  * `use-props`: Variable that will be spread in the corresponding tag.
+
+**Example**
+
+_Instead of writing:_
+```html
+<template>
+  <button
+    on-mouse-down="{{ props.handleMouseDown }}"
+    on-key-down="{{ props.handleKeyDown }}"
+    on-focus="{{ props.handleFocus }}"
+    on-blur="{{ props.handleBlur }}"
+  >
+    Clicked {{ props.clicks }} time(s)
+  </button>
+</template>
+```
+
+_Just write_
+```html
+<template>
+  <button use-props="{{ props.buttonProps }}">
+    Clicked {{ props.clicks }} time(s)
+  </button>
+</template>
+```
+
+_Which is equivalent in React to_
+```js
+export default function(props) {
+  return (
+    <button { ...props.buttonProps }>
+      Clicked {{ props.clicks }} time(s)
+    </button>
+  );
+}
+```
