@@ -124,8 +124,8 @@ child of an other `<import>` tag having a `path` attribute.
 **Example**
 ```html
 <import path="path/to/component">
-  <import name="ANamedImport" as="a-named-import" />
-  <import name="AnohterNamedImport" as="my-component" />
+  <import name="{{ ANamedImport }}" as="a-named-import" />
+  <import name="{{ AnohterNamedImport }}" as="my-component" />
 </import>
 ```
 
@@ -154,8 +154,8 @@ Import the default and some named exports from the same file.
 **Example**
 ```html
 <import path="path/to/component" as="my-component">
-  <import name="ANamedImport" as="a-named-import" />
-  <import name="AnohterNamedImport" as="my-component" />
+  <import name="{{ ANamedImport }}" as="a-named-import" />
+  <import name="{{ AnohterNamedImport }}" as="my-component" />
 </import>
 ```
 
