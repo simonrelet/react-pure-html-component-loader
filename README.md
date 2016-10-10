@@ -210,17 +210,17 @@ their given name.
 
 **Usage**
 ```html
-<template name>
+<template id>
   <!-- Content -->
 </template>
 ```
 
 **Attributes**
-  * `name`: Tag name to use to reference this template.
+  * `id`: Tag name to use to reference this template.
 
 **Example**
 ```html
-<template name="named-template">
+<template id="named-template">
   <!-- ...  -->
 </template>
 
