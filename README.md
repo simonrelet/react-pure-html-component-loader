@@ -3,6 +3,9 @@
 > A Webpack loader allowing imports of HTML templates as if they were React
 > components.
 
+**This project is a Proof of Concept** that it is possible to write React pure
+functional components as HTML5 templates, _almost_ as a Web Component.
+
 ## Usage
 
 _./click-me-component.jsx.html_
@@ -76,6 +79,29 @@ Add to your _webpack.config.js_ the react-html-template-loader:
 ```
 npm install --save-dev react-html-template-loader
 ```
+
+## Background
+
+_Why this POC?_
+
+React provides a great developing experience, you finally have a strong
+integration between the JavaScript code and the template syntax, it feels
+natural to write.
+
+But this merge isn't that good for designers who just know enough HTML and,
+depending on the requirements, it can be a disqualifying criteria for React.
+
+Thanks to the pure functional components and the [Presentational and Container
+pattern](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.b4xio9vw9)
+, most components are simply templates having data as input and some UI
+as output. What if those pure functional templates could simply be written in
+HTML to be easily created and modified by designers?
+
+The purpose of this POC is to show that **it is possible to use HTML components
+as a React pure functional component**.
+
+**react-html-template-loader** reconcile developers and designers. It is a
+Webpack loader compiling HTML templates into pure functional React components.
 
 ## API
 
@@ -378,19 +404,6 @@ export default function(props) {
   );
 }
 ```
-
-## Background
-
-Basically, React is awesome for developers but isn't as simple as HTML for most
-designers, but HTML isn't as flexible as a programing language. Thanks to the
-pure functional components and the Container and Components pattern, most
-components are templates having data as input and some UI as output. What if
-those pure functional templates could simply be in written in HTML to be easily
-created and modified by designers?
-
-**react-html-template-loader** allows to use both the simplicity of the HTML
-syntax and the efficiency of React components. It is a Webpack loader compiling
-HTML templates into pure functional React components.
 
 # License
 

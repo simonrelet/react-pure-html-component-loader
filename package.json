@@ -1,6 +1,6 @@
 {
   "name": "react-html-template-loader",
-  "version": "1.0.0-alpha.12",
+  "version": "1.0.0-alpha.13",
   "description": "A Webpack loader allowing imports of HTML templates as they were React components",
   "main": "./loader/index.js",
   "scripts": {
