@@ -87,16 +87,16 @@ Import the default export of a file.
 
 **Usage**
 ```html
-<import path as />
+<link href as />
 ```
 
 **Attributes**
-  * `path`: Path of the file to import,
+  * `href`: Path of the file to import,
   * `as`: Name to use to reference the default export of the file.
 
 **Example**
 ```html
-<import path="path/to/component" as="my-component" />
+<link href="path/to/component" as="my-component" />
 ```
 
 _Is equivalent in ES2015 to:_
@@ -106,27 +106,27 @@ import MyComponent from 'path/to/component';
 
 #### Named imports
 
-Import an export by its name. The `<import>` tag for a named import must be
-child of an other `<import>` tag having a `path` attribute.
+Import an export by its name. The `<link>` tag for a named import must be
+child of an other `<link>` tag having a `href` attribute.
 
 **Usage**
 ```html
-<import path>
-  <import name as />
-</import>
+<link href>
+  <link name as />
+</link>
 ```
 
 **Attributes**
-  * `path`: Path of the file to import,
+  * `href`: Path of the file to import,
   * `name`: Name of the variable to import,
   * `as`: Name to use to reference the export.
 
 **Example**
 ```html
-<import path="path/to/component">
-  <import name="{{ ANamedImport }}" as="a-named-import" />
-  <import name="{{ AnohterNamedImport }}" as="my-component" />
-</import>
+<link href="path/to/component">
+  <link name="{{ ANamedImport }}" as="a-named-import" />
+  <link name="{{ AnohterNamedImport }}" as="my-component" />
+</link>
 ```
 
 _Is equivalent in ES2015 to:_
@@ -143,9 +143,9 @@ Import the default and some named exports from the same file.
 
 **Usage**
 ```html
-<import path as>
-  <import name as />
-</import>
+<link href as>
+  <link href as />
+</link>
 ```
 
 **Attributes**
@@ -153,10 +153,10 @@ Import the default and some named exports from the same file.
 
 **Example**
 ```html
-<import path="path/to/component" as="my-component">
-  <import name="{{ ANamedImport }}" as="a-named-import" />
-  <import name="{{ AnohterNamedImport }}" as="my-component" />
-</import>
+<link href="path/to/component" as="my-component">
+  <link name="{{ ANamedImport }}" as="a-named-import" />
+  <link name="{{ AnohterNamedImport }}" as="my-component" />
+</link>
 ```
 
 _Is equivalent in ES2015 to:_
@@ -204,7 +204,7 @@ export default function() {
 
 #### Named templates
 
-A named template is simply a template with a `name` attribute, which means it
+A named template is simply a template with a `id` attribute, which means it
 can be used by referencing its name. All named templates will be exported under
 their given name.
 
