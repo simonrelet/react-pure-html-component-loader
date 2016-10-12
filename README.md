@@ -4,7 +4,7 @@
 > components.
 
 **This project is a Proof of Concept** that it is possible to write React pure
-functional components as HTML5 templates, _almost_ as a Web Component.
+functional components like HTML5 templates, _almost_ as a Web Component.
 
 ## Usage
 
@@ -48,7 +48,7 @@ export default class ClickMeContainer extends Component {
 }
 ```
 
-Add to your _webpack.config.js_ the react-html-template-loader:
+Add the react-html-template-loader to your _webpack.config.js_:
 ```js
 {
   module: {
@@ -92,8 +92,8 @@ But this merge isn't that good for designers who just know enough HTML and,
 depending on the requirements, it can be a disqualifying criteria for React.
 
 Thanks to the pure functional components and the [Presentational and Container
-pattern](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.b4xio9vw9)
-, most components are simply templates having data as input and some UI
+pattern](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.b4xio9vw9),
+ most components are simply templates having data as input and some UI
 as output. What if those pure functional templates could simply be written in
 HTML to be easily created and modified by designers?
 
@@ -230,7 +230,7 @@ export default function() {
 
 #### Named templates
 
-A named template is simply a template with a `id` attribute, which means it
+A named template is simply a template with an `id` attribute, which means it
 can be used by referencing its name. All named templates will be exported under
 their given name.
 
