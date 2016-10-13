@@ -1,6 +1,6 @@
 {
   "name": "react-html-template-loader",
-  "version": "1.0.0-alpha.13",
+  "version": "1.0.0-alpha.14",
   "description": "A Webpack loader allowing imports of HTML templates as they were React components",
   "main": "./loader/index.js",
   "scripts": {
@@ -29,12 +29,12 @@
   },
   "devDependencies": {
     "eslint": "^3.5.0",
-    "eslint-config-simonrelet": "^1.0.0"
+    "eslint-config-simonrelet": "^1.0.0",
+    "minimist": "^1.2.0"
   },
   "dependencies": {
     "change-case": "^3.0.0",
     "fs-promise": "^0.5.0",
-    "htmlparser2": "^3.9.1",
-    "minimist": "^1.2.0"
+    "htmlparser2": "^3.9.1"
   }
 }
