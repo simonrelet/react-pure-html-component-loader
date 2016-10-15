@@ -1,8 +1,11 @@
-<link href="path/to/component" as="component-name">
-  <link name="{{ InnerComponent }}" as="named-import-alias" />
-  <link name="{{ OtherNamedImport }}" as="other-named-import" />
+<link rel="import" href="path/to/component/aa" id="aa-component">
+  <link rel="import" name="named-component-aa-one" id="named-component-aa-one-alias" />
+  <link rel="import" id="named-component-aa-two" />
 </link>
-<link href="other/path/to/component" as="other-component" />
+
+<link rel="import" href="path/to/component/bb" id="bb-component" />
+
+<link rel="stylesheet" href="./style" value="style" />
 
 <template id="inner-template">
   <div>{{ props.value }}</div>
@@ -10,23 +13,23 @@
 
 <template>
   <div>
-    <div class="self-closed" />
+    <div class="{{ style.selfClosed }}" />
 
-    <div class="with-content">
+    <div class="{{ style.withContent }}">
       Some Content {{ props.name }}
     </div>
 
-    <span class="empty-tag"></span>
+    <span class="{{ style.emptyTag }}"></span>
 
-    <div class="hybrid-content">
+    <div class="{{ style.hybridContent }}">
       Content
-      <other-component />
+      <bb-component />
     </div>
 
-    <component-name>
-      <named-import-alias />
-      <other-named-import />
-    </component-name>
+    <aa-component>
+      <named-component-aa-one-alias />
+      <named-component-aa-two />
+    </aa-component>
 
     <render for-each="{{ props.users }}" as="{{ user }}">
       <inner-template
@@ -36,7 +39,7 @@
     </render>
 
     <render if="{{ props.show }}">
-      <other-named-import />
+      <bb-component />
     </render>
 
     <render for-each="{{ props.users }}" as="{{ user }}">

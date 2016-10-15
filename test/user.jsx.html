@@ -1,4 +1,4 @@
-<link href="./text-input" as="text-input" />
+<link rel="import" href="./text-input" id="text-input" />
 
 <template>
   <div>
@@ -6,10 +6,9 @@
       <span class="label" for="first-name">First name:</span>
       <span class="value">
         <text-input
+          use-props="{{ props.firstNameProps }}"
           id="first-name"
           autofocus
-          value="{{ props.firstName }}"
-          on-change="{{ props.onFirstNameChange }}"
         />
       </span>
     </div>
@@ -18,9 +17,8 @@
       <span class="label" for="last-name">Last name:</span>
       <span class="value">
         <text-input
+          use-props="{{ props.lastNameProps }}"
           id="last-name"
-          value="{{ props.lastName }}"
-          on-change="{{ props.onLastNameChange }}"
         />
       </span>
     </div>

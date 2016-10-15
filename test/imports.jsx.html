@@ -1,8 +1,13 @@
-<link href="path/to/component" as="component-name">
-  <link name="{{ InnerComponent }}" as="named-import-alias" />
-  <link name="{{ OtherNamedImport }}" as="other-named-import" />
+<link rel="import" href="path/to/component/a" id="a-component" />
+
+<link rel="import" href="path/to/components/a" id="default-component">
+  <link rel="import" id="named-component-one" />
+  <link rel="import" name="named-component-two" id="named-component-two-alias" />
 </link>
-<link href="./style" as="style" />
+
+<link rel="stylesheet" href="./style" value="{{ style }}" />
+
+<link rel="stylesheet" href="./global-style" />
 
 <template>
   <div></div>

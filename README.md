@@ -107,22 +107,25 @@ Webpack loader compiling HTML templates into pure functional React components.
 
 ### Imports
 
-#### Default import
+#### Component import
+
+##### Default import
 
 Import the default export of a file.
 
 **Usage**
 ```html
-<link href as />
+<link rel="import" href id />
 ```
 
 **Attributes**
+  * `rel`: Must be set to `import` for this kind of relation,
   * `href`: Path of the file to import,
-  * `as`: Name to use to reference the default export of the file.
+  * `id`: Name to use to reference the default export of the file.
 
 **Example**
 ```html
-<link href="path/to/component" as="my-component" />
+<link rel="import" href="path/to/component" id="my-component" />
 ```
 
 _Is equivalent in ES2015 to:_
@@ -130,47 +133,49 @@ _Is equivalent in ES2015 to:_
 import MyComponent from 'path/to/component';
 ```
 
-#### Named imports
+##### Named imports
 
 Import an export by its name. The `<link>` tag for a named import must be
 child of an other `<link>` tag having a `href` attribute.
 
 **Usage**
 ```html
-<link href>
-  <link name as />
+<link rel="import" href>
+  <link rel="import" [name] id />
 </link>
 ```
 
 **Attributes**
+  * `rel`: Must be set to `import` for this kind of relation,
   * `href`: Path of the file to import,
-  * `name`: Name of the variable to import,
-  * `as`: Name to use to reference the export.
+  * `name` _(Optional)_: Name of the component to import, can be omitted if it
+    is the same as `id`,
+  * `id`: Name to use to reference the export.
 
 **Example**
 ```html
-<link href="path/to/component">
-  <link name="{{ ANamedImport }}" as="a-named-import" />
-  <link name="{{ AnohterNamedImport }}" as="my-component" />
+<link rel="import" href="path/to/component">
+  <link rel="import" id="component-one" />
+  <link rel="import" name="component-two" id="component-alias" />
 </link>
 ```
 
 _Is equivalent in ES2015 to:_
 ```js
 import {
-  ANamedImport as ANamedImport,
-  AnohterNamedImport as MyComponent
+  ComponentOne,
+  ComponentTwo as ComponentAlias
 } from 'path/to/component';
 ```
 
-#### Default and named imports
+##### Default and named imports
 
 Import the default and some named exports from the same file.
 
 **Usage**
 ```html
-<link href as>
-  <link href as />
+<link rel="import" href id>
+  <link rel="import" [name] id />
 </link>
 ```
 
@@ -179,18 +184,72 @@ Import the default and some named exports from the same file.
 
 **Example**
 ```html
-<link href="path/to/component" as="my-component">
-  <link name="{{ ANamedImport }}" as="a-named-import" />
-  <link name="{{ AnohterNamedImport }}" as="my-component" />
+<link rel="import" href="path/to/component" id="my-component">
+  <link rel="import" id="component-one" />
+  <link rel="import" name="component-two" id="component-alias" />
 </link>
 ```
 
 _Is equivalent in ES2015 to:_
 ```js
 import MyComponent, {
-  ANamedImport as ANamedImport,
-  AnohterNamedImport as MyComponent
+  ComponentOne,
+  ComponentTwo as ComponentAlias
 } from 'path/to/component';
+```
+
+#### Stylesheet import (CSS Modules)
+
+##### Global stylesheet
+
+Import a global stylesheet.
+
+**Usage**
+```html
+<link rel="stylesheet" href />
+```
+
+**Attributes**
+  * `rel`: Must be set to `stylesheet` for this kind of relation,
+  * `href`: Path of the file to import.
+
+**Example**
+```html
+<link rel="stylesheet" href="./global-style" />
+```
+
+_Is equivalent in ES2015 to:_
+```js
+import './global-style';
+```
+
+##### Named stylesheet
+
+Import a stylesheet and name it.
+
+**Usage**
+```html
+<link rel="stylesheet" href value />
+```
+
+**Attributes**
+  * `rel`: Must be set to `stylesheet` for this kind of relation,
+  * `href`: Path of the file to import,
+  * `value`: Value to use to reference the stylesheet.
+
+**Example**
+```html
+<link rel="stylesheet" href="./style" value="{{ style }}" />
+```
+
+_Is equivalent in ES2015 to:_
+```js
+import style from './style';
+```
+
+_It can be used this way:_
+```html
+<div class="{{ style.myClassName }}" />
 ```
 
 ### Templates
