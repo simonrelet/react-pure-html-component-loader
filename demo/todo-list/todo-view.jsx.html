@@ -1,0 +1,23 @@
+<template id="todo-item">
+  <div>{{ props.value }}</div>
+</template>
+
+<template>
+  <div>
+    <form use-props="{{ props.formProps }}">
+      <input
+        type='text'
+        placeholder='Enter todo'
+        use-props="{{ props.inputProps }}"
+      />
+    </form>
+    <div>
+      <render for-each="{{ props.todos }}" as="todo">
+        <todo-item
+          key="{{ todo }}"
+          value="{{ todo }}"
+        />
+      </render>
+    </div>
+  </div>
+</template>

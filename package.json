@@ -4,6 +4,7 @@
   "description": "A Webpack loader allowing imports of HTML templates as they were React components",
   "main": "./loader/index.js",
   "scripts": {
+    "demo": "node demo",
     "lint": "eslint .",
     "test": "node test"
   },
@@ -25,16 +26,33 @@
   },
   "homepage": "https://github.com/simonrelet/react-html-template-loader#readme",
   "eslintConfig": {
-    "extends": "simonrelet"
+    "extends": "react-simonrelet"
   },
   "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "css-loader": "^0.25.0",
     "eslint": "^3.5.0",
-    "eslint-config-simonrelet": "^1.0.0",
-    "minimist": "^1.2.0"
+    "eslint-config-react-simonrelet": "^1.0.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "fs-promise": "^0.5.0",
+    "html-webpack-plugin": "^2.22.0",
+    "json-loader": "^0.5.4",
+    "minimist": "^1.2.0",
+    "node-sass": "^3.10.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
     "change-case": "^3.0.0",
-    "fs-promise": "^0.5.0",
     "htmlparser2": "^3.9.1"
   }
 }

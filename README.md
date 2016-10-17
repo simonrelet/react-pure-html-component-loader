@@ -103,6 +103,21 @@ as a React pure functional component**.
 **react-html-template-loader** reconcile developers and designers. It is a
 Webpack loader compiling HTML templates into pure functional React components.
 
+## Demo
+
+Some demos can be found under the `demo/` folder, to launch one type in a
+console:
+
+```
+npm run demo -- <demo-path>
+```
+
+_For example:_
+
+```
+npm run demo -- demo/todo-list
+```
+
 ## API
 
 ### Imports
