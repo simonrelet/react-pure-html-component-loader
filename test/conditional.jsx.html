@@ -1,9 +1,7 @@
-<template>
+<template default>
   <div>
     <render if="{{ props.user }}">
-      <div>
-        {{ props.user.name }}
-      </div>
+      <div>{{ props.user.name }}</div>
     </render>
   </div>
 </template>

@@ -10,7 +10,7 @@ functional components like HTML5 templates, _almost_ as a Web Component.
 
 _./click-me-component.jsx.html_
 ```html
-<template>
+<template default>
   <button use-props="{{ props.buttonProps }}">
     Clicked {{ props.clicks }} time(s)
   </button>
@@ -273,29 +273,31 @@ A template is an HTML tag containing a single root child.
 
 #### Default template
 
-Each file must contain at most one default template. A default template cannot
-be named, it is the main template of the file.
+Each file must contain at most one default template. A default template is the
+main template of the file.
 
 **Usage**
 ```html
-<template>
+<template default [id]>
   <!-- Content -->
 </template>
 ```
 
 **Attributes**
-  * None.
+  * `default`: Flag the default template,
+  * `id` _(Optional)_: Tag name to use to reference this template. Also used
+    to set the `displayName` of the template for debug purpose.
 
 **Example**
 ```html
-<template>
+<template default id="hello-world">
   <div>Hello World</div>
 </template>
 ```
 
 _Is equivalent in React to:_
 ```js
-export default function() {
+export default function HelloWorld() {
   return (
     <div>Hello World</div>
   );
@@ -316,7 +318,8 @@ their given name.
 ```
 
 **Attributes**
-  * `id`: Tag name to use to reference this template.
+  * `id`: Tag name to use to reference this template. Also used
+    to set the `displayName` of the template for debug purpose.
 
 **Example**
 ```html
@@ -324,7 +327,7 @@ their given name.
   <!-- ...  -->
 </template>
 
-<template>
+<template default>
   <!-- ...  -->
   <named-template />
   <!-- ...  -->
