@@ -369,7 +369,7 @@ each child tag.
 ```html
 <template>
   <div class="users">
-    <render for-each="{{ props.users }}" as="user">
+    <render for-each="{{ props.users }}" as="{{ user }}">
       <div key="{{ user.id }}">{{ user.name }}</div>
     </render>
   </div>
