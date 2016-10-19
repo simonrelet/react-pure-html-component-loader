@@ -1,0 +1,14 @@
+<link rel="import" href="./user" id="user" />
+
+<template>
+  <div>
+    <render for-each="{{ props.users }}" as="{{ user }}">
+      <user
+        key="{{ user.login.md5 }}"
+        firstname="{{ user.name.first }}"
+        lastname="{{ user.name.last }}"
+        image="{{ user.picture.thumbnail }}"
+      />
+    </render>
+  </div>
+</template>

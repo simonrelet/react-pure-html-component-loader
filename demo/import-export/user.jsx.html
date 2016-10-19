@@ -1,0 +1,13 @@
+<link rel="stylesheet" href="./user.scss" value="{{ style }}" />
+
+<template>
+  <div class="{{ style.user }}">
+    <img
+      class="{{ style.image }}"
+      src="{{ props.image }}"
+    />
+    <span class="{{ style.name }}">
+      {{ `${props.firstname} ${props.lastname}` }}
+    </span>
+  </div>
+</template>
