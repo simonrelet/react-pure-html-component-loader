@@ -302,6 +302,7 @@ export default function HelloWorld() {
     <div>Hello World</div>
   );
 }
+HelloWorld.displayName = 'HelloWorld';
 ```
 
 #### Named templates
@@ -341,6 +342,7 @@ export function NamedTemplate(props) {
     // ...
   );
 }
+NamedTemplate.displayName = 'NamedTemplate';
 
 export default function(props) {
   return (
