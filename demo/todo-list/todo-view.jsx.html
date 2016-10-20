@@ -13,7 +13,7 @@
       />
     </form>
     <div>
-      <render for-each="{{ props.todos }}" as="todo">
+      <render for-each="{{ props.todos }}" as="{{ todo }}">
         <todo-item
           key="{{ todo }}"
           value="{{ todo }}"
