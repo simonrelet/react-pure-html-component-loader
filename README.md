@@ -372,7 +372,7 @@ each child tag.
 
 **Example**
 ```html
-<template>
+<template default>
   <div class="users">
     <render for-each="{{ props.users }}" as="{{ user }}">
       <div key="{{ user.id }}">{{ user.name }}</div>
@@ -413,7 +413,7 @@ can only have one child.
 
 **Example**
 ```html
-<template>
+<template default>
   <div class="user">
     <render if="{{ props.user }}">
       <div>{{ props.user.name }}</div>
@@ -452,7 +452,7 @@ UI.
 
 _Instead of writing:_
 ```html
-<template>
+<template default>
   <button
     on-mouse-down="{{ props.handleMouseDown }}"
     on-key-down="{{ props.handleKeyDown }}"
@@ -466,7 +466,7 @@ _Instead of writing:_
 
 _Just write:_
 ```html
-<template>
+<template default>
   <button use-props="{{ props.buttonProps }}">
     Clicked {{ props.clicks }} time(s)
   </button>
@@ -478,7 +478,7 @@ _Which is equivalent in React to:_
 export default function(props) {
   return (
     <button { ...props.buttonProps }>
-      Clicked {{ props.clicks }} time(s)
+      Clicked { props.clicks } time(s)
     </button>
   );
 }
