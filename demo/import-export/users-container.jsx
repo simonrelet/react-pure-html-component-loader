@@ -17,7 +17,7 @@ export default class UsersContainer extends Component {
   }
 
   fetchUsers() {
-    axios('https://randomuser.me/api?results=10&seed=react')
+    axios('https://randomuser.me/api?results=100&seed=react')
       .then(res => this.setState({ users: res.data.results }));
   }
 
