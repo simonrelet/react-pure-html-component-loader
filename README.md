@@ -244,17 +244,17 @@ Import a stylesheet and name it.
 
 **Usage**
 ```html
-<link rel="stylesheet" href value />
+<link rel="stylesheet" href id />
 ```
 
 **Attributes**
   * `rel`: Must be set to `stylesheet` for this kind of relation,
   * `href`: Path of the file to import,
-  * `value`: Value to use to reference the stylesheet.
+  * `id`: Value to use to reference the stylesheet.
 
 **Example**
 ```html
-<link rel="stylesheet" href="./style" value="{{ style }}" />
+<link rel="stylesheet" href="./style" id="{{ style }}" />
 ```
 
 _Is equivalent in ES2015 to:_
