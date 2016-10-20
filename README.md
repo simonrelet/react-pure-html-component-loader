@@ -8,7 +8,7 @@ functional components like HTML5 templates, _almost_ as a Web Component.
 
 ## Usage
 
-_./click-me-component.jsx.html_
+_./click-me-view.jsx.html_
 ```html
 <template default>
   <button use-props="{{ props.buttonProps }}">
@@ -22,7 +22,7 @@ _./click-me-container.jsx_
 import React, { Component } from 'react';
 
 // Import the HTML template as if it was a React component.
-import ClickMeComponent from './click-me-component';
+import ClickMeView from './click-me-view';
 
 export default class ClickMeContainer extends Component {
   constructor(props) {
@@ -34,14 +34,14 @@ export default class ClickMeContainer extends Component {
 
   handleMouseDown(e) {
     e.preventDefault();
-    this.setState({ clicks: this.state.clicks++ });
+    this.setState({ clicks: this.state.clicks + 1 });
   }
 
   render() {
     return (
-      <ClickMeComponent
-        clicks={ this.state.clicks }
+      <ClickMeView
         buttonProps={ this.buttonProps }
+        clicks={ this.state.clicks }
       />
     );
   }
