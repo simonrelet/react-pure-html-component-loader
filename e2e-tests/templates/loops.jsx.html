@@ -1,9 +1,9 @@
 <template default>
   <div>
-    <repeat for-each="{{ props.users }}" as="{{ user }}">
+    <render for-each="{{ props.users }}" as="{{ user }}">
       <div key="{{ user.id }}">
         {{ user.name }}
       </div>
-    </repeat>
+    </render>
   </div>
 </template>

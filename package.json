@@ -5,8 +5,9 @@
   "main": "./loader/index.js",
   "scripts": {
     "demo": "node demo",
-    "lint": "eslint .",
-    "test": "node test"
+    "lint": "eslint **/*.js **/*.jsx --ignore-pattern e2e-tests/templates",
+    "test": "mocha lib/**/*.spec.js",
+    "e2e-test": "mocha e2e-tests/**/*.spec.js"
   },
   "repository": {
     "type": "git",
@@ -35,15 +36,18 @@
     "babel-plugin-transform-object-rest-spread": "^6.16.0",
     "babel-preset-es2015": "^6.16.0",
     "babel-preset-react": "^6.16.0",
+    "chai": "^3.5.0",
     "css-loader": "^0.25.0",
     "eslint": "^3.5.0",
     "eslint-config-react-simonrelet": "^1.0.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.9.0",
     "fs-promise": "^0.5.0",
+    "glob": "^7.1.1",
     "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
+    "mocha": "^3.1.2",
     "node-sass": "^3.10.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
