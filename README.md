@@ -1,5 +1,7 @@
 # react-html-template-loader
 
+[![Build Status](https://travis-ci.org/simonrelet/react-html-template-loader.svg)](https://travis-ci.org/simonrelet/react-html-template-loader)
+
 > A Webpack loader allowing imports of HTML templates as if they were React
 > components.
 
