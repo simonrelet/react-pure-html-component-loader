@@ -5,9 +5,9 @@
   "main": "./loader/index.js",
   "scripts": {
     "demo": "node demo",
-    "lint": "eslint **/*.js **/*.jsx --ignore-pattern e2e-tests/templates",
+    "lint": "eslint **/*.js **/*.jsx --ignore-pattern integration-tests/templates",
     "test": "mocha lib/**/*.spec.js",
-    "e2e-test": "mocha e2e-tests/**/*.spec.js"
+    "integration-test": "mocha integration-tests/**/*.spec.js"
   },
   "repository": {
     "type": "git",

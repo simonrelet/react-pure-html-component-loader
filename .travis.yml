@@ -9,6 +9,6 @@ install:
 env:
   - TEST_TYPE=lint
   - TEST_TYPE=test
-  - TEST_TYPE=e2e-test
+  - TEST_TYPE=integration-test
 script:
   - npm run $TEST_TYPE
