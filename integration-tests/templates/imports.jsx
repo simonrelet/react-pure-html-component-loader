@@ -8,6 +8,11 @@ import './global-style';
 
 export default function(props) {
   return (
-    <div />
+    <div className={ style.className }>
+      <AComponent />
+      <DefaultComponent />
+      <NamedComponentOne />
+      <NamedComponentTwoAlias />
+    </div>
   );
 }
