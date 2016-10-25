@@ -5,5 +5,13 @@
         {{ user.name }}
       </div>
     </render>
+
+    <render if="{{ props.users }}">
+      <render for-each="{{ props.users }}" as="{{ user }}">
+        <div key="{{ user.id }}">
+          {{ user.name }}
+        </div>
+      </render>
+    </render>
   </div>
 </template>

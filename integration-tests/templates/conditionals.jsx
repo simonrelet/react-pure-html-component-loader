@@ -10,6 +10,13 @@ export default function(props) {
           { props.user.name }
         </div>
       ) }
+      { props.array.map(item => (
+        (item.isValid) && (
+          <div>
+            { item.name }
+          </div>
+        )
+      )) }
     </div>
   );
 }

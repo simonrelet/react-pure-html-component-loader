@@ -10,6 +10,13 @@ export default function(props) {
           { user.name }
         </div>
       )) }
+      { (props.users) && (
+        props.users.map(user => (
+          <div key={ user.id }>
+            { user.name }
+          </div>
+        ))
+      ) }
     </div>
   );
 }

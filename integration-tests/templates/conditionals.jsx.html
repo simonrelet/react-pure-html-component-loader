@@ -3,5 +3,11 @@
     <render if="{{ props.user }}">
       <div>{{ props.user.name }}</div>
     </render>
+
+    <render for-each="{{ props.array }}" as="{{ item }}">
+      <render if="{{ item.isValid }}">
+        <div>{{ item.name }}</div>
+      </render>
+    </render>
   </div>
 </template>
