@@ -1,6 +1,6 @@
 # v1.0.0
 
-  * [ ] Full test suite,
+  * [x] Full test suite,
   * [ ] Provide error handling,
   * [x] Default and named imports,
   * [x] Default and named exports,
