@@ -26,7 +26,7 @@ describe('E2E tests', function() {
     ];
     const test = (html, expected) => {
       const res = reactHtmlTemplate({ html });
-      expect(res.react).to.equal(expected);
+      expect(res.reactStr).to.equal(expected);
     };
 
     it(name, function(done) {
