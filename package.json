@@ -8,8 +8,8 @@
     "clean": "node scripts/clean",
     "demo": "node demo",
     "lint": "eslint **/*.js **/*.jsx --ignore-pattern integration-tests/templates",
-    "test": "mocha lib/**/*.spec.js",
-    "integration-test": "mocha integration-tests/**/*.spec.js"
+    "test": "mocha 'lib/**/*.spec.js'",
+    "integration-test": "mocha 'integration-tests/**/*.spec.js'"
   },
   "repository": {
     "type": "git",
