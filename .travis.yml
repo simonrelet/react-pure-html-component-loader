@@ -8,7 +8,7 @@ install:
   - npm install
 env:
   - TEST_TYPE=lint
-  - TEST_TYPE=test
+  - TEST_TYPE=unit-test
   - TEST_TYPE=integration-test
 script:
   - npm run $TEST_TYPE
