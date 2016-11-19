@@ -16,8 +16,7 @@ const pkgOmit = [
 
 const otherFilesToCopy = [
   'LICENSE',
-  'README.md',
-  'ROADMAP.md'
+  'README.md'
 ];
 
 function copyFile(options) {

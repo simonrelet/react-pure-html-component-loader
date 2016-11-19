@@ -36,7 +36,7 @@ module.exports = function(options) {
         {
           test: /\.jsx\.html$/,
           exclude: /node_modules/,
-          loader: 'babel!react-html-template'
+          loader: 'babel!react-pure-html-component'
         },
         {
           test: /\.svg$/,
@@ -65,7 +65,7 @@ module.exports = function(options) {
 
     resolveLoader: {
       alias: {
-        'react-html-template': path.join(__dirname, '..', 'loader', 'index')
+        'react-pure-html-component': path.join(__dirname, '..', 'loader', 'index')
       }
     },
 

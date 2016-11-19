@@ -1,12 +1,9 @@
-# react-html-template-loader
+# react-pure-html-component-loader
 
-[![Build Status](https://travis-ci.org/simonrelet/react-html-template-loader.svg?branch=master)](https://travis-ci.org/simonrelet/react-html-template-loader) [![npm version](https://badge.fury.io/js/react-html-template-loader.svg)](https://badge.fury.io/js/react-html-template-loader)
+[![Build Status](https://travis-ci.org/simonrelet/react-pure-html-component-loader.svg?branch=master)](https://travis-ci.org/simonrelet/react-pure-html-component-loader) [![npm version](https://badge.fury.io/js/react-pure-html-component-loader.svg)](https://badge.fury.io/js/react-pure-html-component-loader)
 
-> A Webpack loader allowing imports of HTML templates as if they were React
-> components.
-
-**This project is a Proof of Concept** that it is possible to write React pure
-functional components like HTML5 templates, _almost_ as a Web Component.
+> A Webpack loader allowing imports of HTML components as if they were React
+> pure functional components.
 
 ## Usage
 
@@ -50,7 +47,7 @@ export default class ClickMeContainer extends Component {
 }
 ```
 
-Add the react-html-template-loader to your _webpack.config.js_:
+Add the react-pure-html-component-loader to your _webpack.config.js_:
 ```js
 {
   module: {
@@ -58,7 +55,7 @@ Add the react-html-template-loader to your _webpack.config.js_:
       {
         test: /\.jsx\.html$/,
         exclude: /node_modules/,
-        loader: 'babel!react-html-template'
+        loader: 'babel!react-pure-html-component'
       }
     ]
   },
@@ -68,7 +65,7 @@ Add the react-html-template-loader to your _webpack.config.js_:
 }
 ```
 
-## Features
+## Supported Features
 
   * Default and named imports/exports,
   * Multiple template definitions in the same file,
@@ -79,12 +76,10 @@ Add the react-html-template-loader to your _webpack.config.js_:
 ## Installation
 
 ```
-npm install --save-dev react-html-template-loader
+npm install --save-dev react-pure-html-component-loader
 ```
 
 ## Background
-
-_Why this POC?_
 
 React provides a great developing experience, you finally have a strong
 integration between the JavaScript code and the template syntax, it feels
@@ -95,15 +90,15 @@ depending on the requirements, it can be a disqualifying criteria for React.
 
 Thanks to the pure functional components and the [Presentational and Container
 pattern](https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.b4xio9vw9),
- most components are simply templates having data as input and some UI
-as output. What if those pure functional templates could simply be written in
+most components are simply _templates_ having data as input and some UI
+as output. What if those pure functional components could simply be written in
 HTML to be easily created and modified by designers?
 
-The purpose of this POC is to show that **it is possible to use HTML components
-as a React pure functional component**.
+The purpose of this Webpack loader is to convert **HTML components to React pure
+functional component**.
 
-**react-html-template-loader** reconcile developers and designers. It is a
-Webpack loader compiling HTML templates into pure functional React components.
+**react-pure-html-component-loader** reconcile developers and designers. It is a
+Webpack loader compiling HTML components into pure functional React components.
 
 ## Demo
 
@@ -128,7 +123,7 @@ npm run demo -- demo/todo-list
 
 ##### Default import
 
-Import the default export of a file.
+Import the default component of a file.
 
 **Usage**
 ```html
@@ -138,7 +133,7 @@ Import the default export of a file.
 **Attributes**
   * `rel`: Must be set to `import` for this kind of relation,
   * `href`: Path of the file to import,
-  * `id`: Name to use to reference the default export of the file.
+  * `id`: Name to use to reference the default component of the file.
 
 **Example**
 ```html
@@ -152,7 +147,7 @@ import MyComponent from 'path/to/component';
 
 ##### Named imports
 
-Import an export by its name. The `<link>` tag for a named import must be
+Import an component by its name. The `<link>` tag for a named import must be
 child of an other `<link>` tag having a `href` attribute.
 
 **Usage**
@@ -167,7 +162,7 @@ child of an other `<link>` tag having a `href` attribute.
   * `href`: Path of the file to import,
   * `name` _(Optional)_: Name of the component to import, can be omitted if it
     is the same as `id`,
-  * `id`: Name to use to reference the export.
+  * `id`: Name to use to reference the component.
 
 **Example**
 ```html
@@ -187,7 +182,7 @@ import {
 
 ##### Default and named imports
 
-Import the default and some named exports from the same file.
+Import the default and some named components from the same file.
 
 **Usage**
 ```html
@@ -269,14 +264,15 @@ _It can be used this way:_
 <div class="{{ style.myClassName }}" />
 ```
 
-### Templates
+### Components
 
-A template is an HTML tag containing a single root child.
+A component is the content of an HTML tag `<template>`. It can only have a
+single child.
 
-#### Default template
+#### Default component
 
-Each file must contain at most one default template. A default template is the
-main template of the file.
+Each file must contain at most one default component. A default component is the
+main component of the file.
 
 **Usage**
 ```html
@@ -286,9 +282,9 @@ main template of the file.
 ```
 
 **Attributes**
-  * `default`: Flag the default template,
-  * `id` _(Optional)_: Tag name to use to reference this template. Also used
-    to set the `displayName` of the template for debug purpose.
+  * `default`: Flag the component as default,
+  * `id` _(Optional)_: Tag name to use to reference this component. Also used
+    to set the `displayName` of the component for debug purpose.
 
 **Example**
 ```html
@@ -307,11 +303,11 @@ export default function HelloWorld() {
 HelloWorld.displayName = 'HelloWorld';
 ```
 
-#### Named templates
+#### Named components
 
-A named template is simply a template with an `id` attribute, which means it
-can be used by referencing its name. All named templates will be exported under
-their given name.
+A named component is simply a `<template>` tag with an `id` attribute, which
+means it can be used by referencing its name. All named components will be
+exported under their given name.
 
 **Usage**
 ```html
@@ -321,35 +317,35 @@ their given name.
 ```
 
 **Attributes**
-  * `id`: Tag name to use to reference this template. Also used
-    to set the `displayName` of the template for debug purpose.
+  * `id`: Tag name to use to reference this component. Also used
+    to set the `displayName` of the component for debug purpose.
 
 **Example**
 ```html
-<template id="named-template">
+<template id="named-component">
   <!-- ...  -->
 </template>
 
 <template default>
   <!-- ...  -->
-  <named-template />
+  <named-component />
   <!-- ...  -->
 </template>
 ```
 
 _Is equivalent in React to:_
 ```js
-export function NamedTemplate(props) {
+export function NamedComponent(props) {
   return (
     // ...
   );
 }
-NamedTemplate.displayName = 'NamedTemplate';
+NamedComponent.displayName = 'NamedComponent';
 
 export default function(props) {
   return (
     // ...
-    <NamedTemplate />
+    <NamedComponent />
     // ...
   );
 }
@@ -437,8 +433,8 @@ export default function(props) {
 
 ### Props spreading
 
-Props spreading is used to simplify the template so the focus can be kept on the
-UI.
+Props spreading is used to simplify the component so the focus can be kept on
+the UI.
 
 **Usage**
 ```html

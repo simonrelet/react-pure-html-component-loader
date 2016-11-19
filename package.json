@@ -1,7 +1,7 @@
 {
-  "name": "react-html-template-loader",
-  "version": "1.0.0-beta.2",
-  "description": "A Webpack loader allowing imports of HTML templates as they were React components",
+  "name": "react-pure-html-component-loader",
+  "version": "1.0.0-beta.3",
+  "description": "A Webpack loader allowing imports of HTML components as they were React pure functional components",
   "main": "./loader/index.js",
   "private": true,
   "scripts": {
@@ -15,11 +15,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/simonrelet/react-html-template-loader.git"
+    "url": "git+https://github.com/simonrelet/react-pure-html-component-loader.git"
   },
   "keywords": [
     "html",
     "template",
+    "components",
+    "pure",
+    "functional",
     "react",
     "webpack",
     "loader"
@@ -27,9 +30,9 @@
   "author": "Simon Relet",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/simonrelet/react-html-template-loader/issues"
+    "url": "https://github.com/simonrelet/react-pure-html-component-loader/issues"
   },
-  "homepage": "https://github.com/simonrelet/react-html-template-loader#readme",
+  "homepage": "https://github.com/simonrelet/react-pure-html-component-loader#readme",
   "eslintConfig": {
     "extends": "react-simonrelet"
   },
