@@ -13,7 +13,7 @@ const WebpackDevServer = require('webpack-dev-server');
 
 const webpackConfig = require('./webpack.config.js');
 
-let demo = path.resolve(__dirname, 'todo-list');
+let demo = path.join(__dirname, 'todo-list');
 if (argv._.length === 1) {
   demo = argv._[0];
 }
@@ -21,8 +21,8 @@ if (argv._.length === 1) {
 const config = webpackConfig({
   port: argv.port,
   outputDir: path.resolve(),
-  entry: path.resolve(process.env.PWD, demo, 'index.jsx'),
-  html: path.resolve(__dirname, 'index.html')
+  entry: path.join(process.env.PWD, demo, 'index.jsx'),
+  html: path.join(__dirname, 'index.html')
 });
 
 const devServerOptions = {

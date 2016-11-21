@@ -3,9 +3,12 @@
 
 const fs = require('fs-promise');
 const glob = require('glob');
+const path = require('path');
 const omit = require('lodash.omit');
 
-const resolve = require('./resolve-paths')([ __dirname, '..' ]);
+function absPath() {
+  return path.join(__dirname, '..', ...arguments);
+}
 
 const pkgOmit = [
   'private',
@@ -15,8 +18,8 @@ const pkgOmit = [
 ];
 
 const otherFilesToCopy = [
-  'LICENSE',
-  'README.md'
+  absPath('LICENSE'),
+  absPath('README.md')
 ];
 
 function copyFile(options) {
@@ -25,17 +28,19 @@ function copyFile(options) {
 }
 
 function copyAllSources() {
-  const sources = glob.sync('@(lib|loader)/**/*.js', { ignore: '**/*.spec.js' })
+  const sources = glob.sync(absPath('@(lib|loader)/**/*.js'), { ignore: '**/*.spec.js' })
     .concat(otherFilesToCopy);
-
-  const copySources = sources.map(src => copyFile({ src, dst: `dist/${src}` }));
-  const copyPackage = fs.readJson('package.json')
-    .then(pkg => fs.writeJson('dist/package.json', omit(pkg, pkgOmit)));
+  const copySources = sources.map(src => copyFile({
+    src,
+    dst: absPath('dist', path.relative(absPath(''), src))
+  }));
+  const copyPackage = fs.readJson(absPath('package.json'))
+    .then(pkg => fs.writeJson(absPath('dist', 'package.json'), omit(pkg, pkgOmit)));
 
   return Promise.all(copySources.concat([ copyPackage ]));
 }
 
-fs.ensureDir(resolve([ 'dist' ]))
+fs.ensureDir(absPath('dist'))
   .then(copyAllSources)
   .catch(err => {
     console.error(err);
