@@ -7,18 +7,14 @@ const chai = require('chai');
 const reactHtmlTemplate = require('../lib');
 
 const expect = chai.expect;
-const pattern = `${__dirname}/templates/**/*.jsx.html`;
-const templates = glob.sync(pattern).map(f => ({
+const pattern = `${__dirname}/components/**/*.jsx.html`;
+const components = glob.sync(pattern).map(f => ({
   srcPath: f,
   expectedPath: f.replace('.html', '')
 }));
 
-function spread(cb) {
-  return params => cb.apply(null, params);
-}
-
 describe('E2E tests', function() {
-  templates.forEach(template => {
+  components.forEach(template => {
     const name = path.basename(template.srcPath, '.jsx.html');
     const contents = [
       fs.readFile(template.srcPath, 'utf8'),
@@ -31,7 +27,7 @@ describe('E2E tests', function() {
 
     it(name, function(done) {
       Promise.all(contents)
-        .then(spread(test))
+        .then(res => test(...res))
         .then(done)
         .catch(done);
     });

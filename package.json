@@ -7,7 +7,7 @@
   "scripts": {
     "clean": "node scripts/clean",
     "demo": "node demo",
-    "lint": "eslint **/*.js **/*.jsx --ignore-pattern integration-tests/templates",
+    "lint": "eslint **/*.js **/*.jsx --ignore-pattern integration-tests/components",
     "unit-test": "mocha 'lib/**/*.spec.js'",
     "integration-test": "mocha 'integration-tests/**/*.spec.js'",
     "test": "npm run unit-test && npm run integration-test",
@@ -19,7 +19,6 @@
   },
   "keywords": [
     "html",
-    "template",
     "components",
     "pure",
     "functional",

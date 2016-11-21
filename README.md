@@ -20,7 +20,7 @@ _./click-me-container.jsx_
 ```js
 import React, { Component } from 'react';
 
-// Import the HTML template as if it was a React component.
+// Import the HTML component as if it was a React component.
 import ClickMeView from './click-me-view';
 
 export default class ClickMeContainer extends Component {
@@ -68,7 +68,7 @@ Add the react-pure-html-component-loader to your _webpack.config.js_:
 ## Supported Features
 
   * Default and named imports/exports,
-  * Multiple template definitions in the same file,
+  * Multiple component definitions in the same file,
   * Explicit conditional and loop rendering,
   * Props spreading,
   * CSS modules.
