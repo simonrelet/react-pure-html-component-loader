@@ -11,3 +11,9 @@
     </render>
   </div>
 </template>
+
+<template id="conditional-fist">
+  <render if="{{ props.user }}">
+    <div>{{ props.user.name }}</div>
+  </render>
+</template>

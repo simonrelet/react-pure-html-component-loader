@@ -13,7 +13,7 @@ const WebpackDevServer = require('webpack-dev-server');
 
 const webpackConfig = require('./webpack.config.js');
 
-let demo = path.join(__dirname, 'todo-list');
+let demo = path.join('demo', 'todo-list');
 if (argv._.length === 1) {
   demo = argv._[0];
 }

@@ -2,6 +2,17 @@
 
 import React from 'react';
 
+export function ConditionalFist(props) {
+  return (
+    (props.user) && (
+      <div>
+        { props.user.name }
+      </div>
+    )
+  );
+}
+ConditionalFist.displayName = 'ConditionalFist';
+
 export default function(props) {
   return (
     <div>
