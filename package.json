@@ -1,6 +1,6 @@
 {
   "name": "react-pure-html-component-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Webpack loader allowing imports of HTML components as they were React pure functional components",
   "main": "./loader/index.js",
   "private": true,
