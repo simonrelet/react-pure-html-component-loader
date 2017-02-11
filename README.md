@@ -147,8 +147,8 @@ import MyComponent from 'path/to/component';
 
 ##### Named imports
 
-Import an component by its name. The `<link>` tag for a named import must be
-child of an other `<link>` tag having a `href` attribute.
+Import a component by its name. The `<link>` tag for a named import must be
+child of another `<link>` tag having a `href` attribute.
 
 **Usage**
 ```html
@@ -354,8 +354,8 @@ export default function(props) {
 ### Loops
 
 A loop will render its content for each element in the array. The `render` tag
-can only have one child. When looping over an array, an `id` tag must be set on
-each child tag.
+can only have one child. When looping over an array, a `key` attribute must be
+set on each child tag.
 
 **Usage**
 ```html
@@ -386,7 +386,7 @@ export default function(props) {
     <div className="users">
       { props.users.map(user => (
         <div key={ user.id }>
-          {{ user.name }}
+          { user.name }
         </div>
       )) }
     </div>
@@ -425,7 +425,7 @@ _Is equivalent in React to:_
 export default function(props) {
   return (
     <div className="user">
-      { props.user && <div>{{ props.user.name }}</div> }
+      { props.user && <div>{ props.user.name }</div> }
     </div>
   );
 }
@@ -481,6 +481,8 @@ export default function(props) {
   );
 }
 ```
+
+The conversion from HTML attributes to JSX can be found in this [mapping file](lib/attribute-conversion.js).
 
 # License
 
